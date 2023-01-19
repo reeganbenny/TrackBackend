@@ -8,13 +8,11 @@ router.get("/", (req, res) => {
   res.send("Hi");
 });
 router.post("/add-location", (req, res) => {
-  console.log(req.body.watchId);
-  console.log(req.body.longitude);
-  console.log(req.body.latitude);
   const location = new locationSchema({
     watchId: req.body.watchId,
     longitude: req.body.longitude,
     latitude: req.body.latitude,
+    speed: req.body.speed,
   });
   location.save().then((result) => {
     res.json({
